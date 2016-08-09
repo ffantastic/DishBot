@@ -17,6 +17,7 @@ namespace testBot.Utils
             return testQuestionState(user, questionState, text);
         }
         private static string testQuestionState(User user, QuestionState questionState, string text) {
+
             string msg = $"curent { questionState.Current}, finished {questionState.IsFinished()}, next {questionState.Next()}";
             return msg;
         }

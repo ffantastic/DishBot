@@ -13,6 +13,9 @@ namespace testBot.DishBot
         public int Total { get; set; }
         public Question Current { get;  set; }
         public Dictionary<int, Question> Id2Question { get; set; }
+        public Dictionary<int, QuestionGroup> P2QG { get; set; }
+        public PriorityQueue<QuestionGroup> Queue { get; set; }
+
         private Random random = new Random();
 
         public QuestionState()
@@ -23,13 +26,23 @@ namespace testBot.DishBot
         public void init() {
             List<Question> list = loadData();
             Total = list.Count;
-
-            //init linked list
+            P2QG = new Dictionary<int, QuestionGroup>();
+            Queue = new PriorityQueue<QuestionGroup>();
             Id2Question = new Dictionary<int, Question>();
             list.ForEach(item =>
             {
                 Id2Question.Add(item.Id, item);
+                QuestionGroup qg;
+                if (P2QG.TryGetValue(item.Priority, out qg))
+                {
+                    qg.Map.Add(item.Id, item);
+                }
+                else {
+                    qg = new QuestionGroup(new Dictionary<int, Question>() { { item.Id, item} }, item.Priority);
+                    P2QG.Add(qg.Priority, qg);
+                }
             });
+            //init linked list
             list.Where(item =>
             {
                 return item.NextId != -1;
@@ -38,7 +51,17 @@ namespace testBot.DishBot
                 item.Next = Id2Question[item.NextId];
             });
 
-            Current = list[0];
+            foreach (int k in P2QG.Keys) {
+                Queue.Push(P2QG[k]);
+            }
+
+            //if (Queue.Count > 0) {
+            //    QuestionGroup qg = Queue.Top();
+            //    if (qg.Map.Count > 0) {
+            //        Current = randomSelect(qg.Map);
+            //    }
+            //}
+            Current = null;
         }
         public Question Next()
         {
@@ -47,43 +70,51 @@ namespace testBot.DishBot
                 return null;
             }
 
-            if (Id2Question.Count == 1)
-            {
-                Id2Question.Clear();
-                Current = null;
-                return null;
-            }
             //map count >=2
             if (Current != null)
             {
-                Id2Question.Remove(Current.Id);
                 while (Current.Next != null)
                 {
                     Current = Current.Next;
                     if (Id2Question.ContainsKey(Current.Id))
+                    {
+                        Id2Question.Remove(Current.Id);
+                        QuestionGroup qg = P2QG[Current.Priority];
+                        qg.Map.Remove(Current.Id);
                         return Current;
+                    }
                 }
             }
-
-            Current = randomSelect();
+            while (Queue.Count > 0) {
+                QuestionGroup qg = Queue.Top();
+                if (qg == null || qg.Map.Count == 0) {
+                    Queue.Pop();
+                    continue;
+                }
+                Current = randomSelect(qg.Map);
+                break;
+            }
+            
             return Current;
         }
         public bool IsFinished() {
             return Id2Question.Count == 0;
         }
-        private Question randomSelect()
+        private Question randomSelect(Dictionary<int,Question> map)
         {
-            int no = random.Next(Id2Question.Count);
-            KeyValuePair<int, Question> pair = Id2Question.ElementAt(no);
+            int no = random.Next(map.Count);
+            KeyValuePair<int, Question> pair = map.ElementAt(no);
+            map.Remove(pair.Key);
+            Id2Question.Remove(pair.Key);
             return pair.Value;
         }
         private List<Question> loadData()
         {
             List<Question> list = JsonConvert.DeserializeObject<List<Question>>(QuestionDB.JsonList);
-            list.Sort((x, y) =>
-            {
-                return x.Priority - y.Priority;
-            });
+            //list.Sort((x, y) =>
+            //{
+            //    return x.Priority - y.Priority;
+            //});
             return list;
         }
 
