@@ -15,7 +15,6 @@ namespace testBot.DishBot
         public Dictionary<int, Question> Id2Question { get; set; }
         public Dictionary<int, QuestionGroup> P2QG { get; set; }
         public PriorityQueue<QuestionGroup> Queue { get; set; }
-
         private Random random = new Random();
 
         public QuestionState()
@@ -54,6 +53,7 @@ namespace testBot.DishBot
             foreach (int k in P2QG.Keys) {
                 Queue.Push(P2QG[k]);
             }
+      
 
             //if (Queue.Count > 0) {
             //    QuestionGroup qg = Queue.Top();
@@ -73,6 +73,7 @@ namespace testBot.DishBot
             //map count >=2
             if (Current != null)
             {
+
                 while (Current.Next != null)
                 {
                     Current = Current.Next;
@@ -92,6 +93,7 @@ namespace testBot.DishBot
                     continue;
                 }
                 Current = randomSelect(qg.Map);
+
                 break;
             }
             

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using testBot.Bean;
+using testBot.Data;
 using testBot.DishBot;
 
 namespace testBot.Utils
@@ -20,13 +21,19 @@ namespace testBot.Utils
         {
             await Set<User>(activity, KEY_USER, user);
         }
-        public static async Task<QuestionState> GetQuestionState(Activity activity)
+        public static QuestionState GetQuestionState(Activity activity)
         {
-            return await Get<QuestionState>(activity, KEY_QSTATE);
+            QuestionState qs;
+            Cache.QuestionStateCache.TryGetValue(new UUID(activity.ChannelId, activity.From.Id),out qs);
+            return qs;
         }
-        public static async Task SettQuestionState(Activity activity,QuestionState qs)
+        public static void SettQuestionState(Activity activity,QuestionState qs)
         {
-            await Set<QuestionState>(activity, KEY_QSTATE, qs);
+            UUID uuid = new UUID(activity.ChannelId, activity.From.Id);
+            if (Cache.QuestionStateCache.ContainsKey(uuid))
+                Cache.QuestionStateCache[uuid] = qs;
+            else
+                Cache.QuestionStateCache.Add(uuid, qs);
         }
 
         public static async Task Set<V>(Activity activity, string key, V v)

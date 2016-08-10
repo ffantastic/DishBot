@@ -17,8 +17,10 @@ namespace testBot.DishBot
 
         public PriorityQueue(SerializationInfo info, StreamingContext context)
         {
+
             Count = (int)info.GetValue("Count", typeof(int));
             heap = (T[])info.GetValue("heap", typeof(T[]));
+            //t2 = (Question)info.GetValue("test", typeof(Question));
         }
         public PriorityQueue() : this(16) { }
 
@@ -76,6 +78,7 @@ namespace testBot.DishBot
         {
             info.AddValue("Count", Count, typeof(int));
             info.AddValue("heap", heap, typeof(T[]));
+            //info.AddValue("test", t2, typeof(Question));
         }
 
     }
