@@ -31,7 +31,7 @@ namespace testBot
                 int length = (activity.Text ?? string.Empty).Length;
                
                 User user = await SessionUtils.GetUser(activity);
-                QuestionState questionState = SessionUtils.GetQuestionState(activity);
+                QuestionState questionState = await SessionUtils.GetQuestionStateRemote(activity);
                 if (user == null)
                     user = new User();
                 if (questionState == null)
@@ -42,7 +42,7 @@ namespace testBot
                 string replyStr = BotUtils.GetAnswer(user, questionState,activity.Text);
 
                 await SessionUtils.SetUser(activity,user);
-                SessionUtils.SettQuestionState(activity, questionState);
+                await SessionUtils.SetQuestionStateRemote(activity, questionState);
                 // return our reply to the user
                 // Activity reply = activity.CreateReply($"You sent {activity.Text} which was {length} characters, this is No.{count} th message");
                 Activity reply = activity.CreateReply(replyStr);

@@ -21,13 +21,21 @@ namespace testBot.Utils
         {
             await Set<User>(activity, KEY_USER, user);
         }
-        public static QuestionState GetQuestionState(Activity activity)
+        public static async Task<QuestionState> GetQuestionStateRemote(Activity activity)
+        {
+            return await Get<QuestionState>(activity, KEY_QSTATE);
+        }
+        public static async Task SetQuestionStateRemote(Activity activity, QuestionState qs)
+        {
+            await Set<QuestionState>(activity, KEY_QSTATE, qs);
+        }
+        public static QuestionState GetQuestionStateLocal(Activity activity)
         {
             QuestionState qs;
             Cache.QuestionStateCache.TryGetValue(new UUID(activity.ChannelId, activity.From.Id),out qs);
             return qs;
         }
-        public static void SettQuestionState(Activity activity,QuestionState qs)
+        public static void SetQuestionStateLocal(Activity activity,QuestionState qs)
         {
             UUID uuid = new UUID(activity.ChannelId, activity.From.Id);
             if (Cache.QuestionStateCache.ContainsKey(uuid))
