@@ -6,7 +6,7 @@ using System.Web;
 
 namespace testBot.Bean
 {
-    public class Question
+    public class Question : ISerializable
     {
         public int Id { get; set; }
         public string Content { get; set; }
@@ -15,15 +15,22 @@ namespace testBot.Bean
         public int NextId { get; set; }
 
         public Question() { }
-        //public Question(SerializationInfo info, StreamingContext context)
-        //{
-        //    Id = (int)info.GetValue("Id", typeof(int));
-        //    Content = (string)info.GetValue("Content", typeof(string));
-        //    Next = (Question)info.GetValue("Next", typeof(Question));
-        //    Priority = (int)info.GetValue("Priority", typeof(int));
-        //    NextId = (int)info.GetValue("NextId", typeof(int));
-         
-        //}
+        public Question(SerializationInfo info, StreamingContext context)
+        {
+            Id = (int)info.GetValue("Id", typeof(int));
+            Content = (string)info.GetValue("Content", typeof(string));
+            Priority = (int)info.GetValue("Priority", typeof(int));
+            NextId = (int)info.GetValue("NextId", typeof(int));
+
+        }
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+
+            info.AddValue("Id", Id, typeof(int));
+            info.AddValue("Content", Content, typeof(string));
+            info.AddValue("Priority", Priority, typeof(int));
+            info.AddValue("NextId", NextId, typeof(int));
+        }
         public Question(int id, string content, Question next, int priority, int nextId)
         {
             this.Id = id;
@@ -37,14 +44,6 @@ namespace testBot.Bean
             return Content;
         }
 
-        //public void GetObjectData(SerializationInfo info, StreamingContext context)
-        //{
 
-        //    info.AddValue("Id", Id, typeof(int));
-        //    info.AddValue("Content", Content, typeof(string));
-        //    info.AddValue("Next", Next, typeof(Question));
-        //    info.AddValue("Priority", Priority, typeof(int));
-        //    info.AddValue("NextId", NextId, typeof(int));
-        //}
     }
 }
