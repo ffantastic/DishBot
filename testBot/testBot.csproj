@@ -119,10 +119,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Bean\NotEats.cs" />
     <Compile Include="Bean\Question.cs" />
+    <Compile Include="Bean\QuestionGroup.cs" />
     <Compile Include="Bean\User.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Data\Cache.cs" />
     <Compile Include="Data\DB.cs" />
+    <Compile Include="Data\Food.cs" />
+    <Compile Include="DishBot\AnswerProcessor.cs" />
+    <Compile Include="DishBot\MenuGenerator.cs" />
+    <Compile Include="DishBot\PriorityQueue.cs" />
     <Compile Include="DishBot\QuestionState.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
