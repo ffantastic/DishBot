@@ -11,7 +11,9 @@ namespace testBot.Utils
     {
         public static string GetAnswer(User user, QuestionState questionState, string text)
         {
-            if(questionState.Current != null && !questionState.IsFinished())
+            // test here
+            MenuGenerator.Generate(user);
+            if (questionState.Current != null && !questionState.IsFinished())
             {
                 if(!AnswerProcessor.Process(questionState.Current.Id, user, text))
                 {

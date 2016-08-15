@@ -16,7 +16,7 @@ namespace testBot.Bean
         /// <summary>
         /// WVector[0]: instruction: 30004 means 3 men and 4 women. // 10000*nMen + nWomen.
         /// </summary>
-        private IList<int> WVector = new List<int>(InitVector);
+        internal IList<int> WVector = new List<int>(InitVector);
 
         public User() {
         }
