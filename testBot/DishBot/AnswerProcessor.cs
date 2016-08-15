@@ -24,6 +24,7 @@ namespace testBot.DishBot
             hashToProcessor[4] = processor4;
             hashToProcessor[5] = processor5;
             hashToProcessor[6] = processor6;
+            hashToProcessor[7] = processor7;
         }
 
         public static bool Process(int QuestionId, User user, string text)
@@ -235,10 +236,41 @@ namespace testBot.DishBot
                 return true;
             }
 
+            string[] AnswerYes =
+            {
+                "有",
+                "嗯"
+            };
+
+            foreach (var str in AnswerYes)
+            {
+                if (text.Contains(str))
+                {
+                    user.GetWVector()[5] = 1;
+                    return true;
+                }
+            }
+
             return false;
         }
 
         private static bool processor6(User user, string text)
+        {
+            IList<Food> notEats = NotEats.GetNotEats(text);
+
+            if (notEats.Count > 0)
+            {
+                foreach (var element in notEats)
+                {
+                    user.GetNotEatFood().Add(element);
+                }
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool processor7(User user, string text)
         {
             string[] patterns =
             {
