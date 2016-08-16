@@ -50,7 +50,7 @@ namespace testBot.Data
     public class Dish
     {
         public string Name = "";
-        public List<string> Materials;
+        public List<string> Materials = new List<string>();
 
         public double Price = -1;
         public double Amount = -1;

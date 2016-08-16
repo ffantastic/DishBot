@@ -19,14 +19,15 @@ namespace testBot
 
         private void ReadData(List<Dish> TheWholeDishes, string filePath)
         {
+            var dir = Directory.GetCurrentDirectory();
             if (File.Exists(filePath))
             {
                 foreach (var eachline in File.ReadAllLines(filePath))
                 {
-                    string[] cols = eachline.Split(' ');
+                    string[] cols = eachline.Split(new char[] { ' ', '\t' });
 
                     Dish eachDish = new Dish();
-                    Console.Write(eachDish.Name);
+                    eachDish.Name = cols[0];
                     eachDish.Price = Convert.ToDouble(cols[1]);
                     eachDish.Amount = Convert.ToDouble(cols[2]);
 

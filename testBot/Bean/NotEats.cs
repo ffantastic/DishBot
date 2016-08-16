@@ -39,7 +39,7 @@ namespace testBot.Bean
                 if (text.Contains(table.Key))
                 {
                     notEats.Add(table.Value);
-                }
+                } 
             }
 
             return notEats;
