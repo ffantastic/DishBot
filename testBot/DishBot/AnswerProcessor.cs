@@ -40,29 +40,71 @@ namespace testBot.DishBot
                 @"([\d]+)[^\d]*男[^\d]*([\d]+)[^\d]*女",
                 @"([\d]+)[^\d]*女[^\d]*([\d]+)[^\d]*男",
                 @"男[^\d]*([\d]+)[^\d]*女[^\d]*([\d]+)",
-                @"女[^\d]*([\d]+)[^\d]*男[^\d]*([\d]+)"
+                @"女[^\d]*([\d]+)[^\d]*男[^\d]*([\d]+)",
+                @"([\d]+)[^\d]*男[^\d]*女[^\d]*([\d]+)",
+                @"([\d]+)[^\d]*女[^\d]*男[^\d]*([\d]+)",
+                @"男[^\d]*([\d]+)[^\d]*([\d]+)[^\d]*女",
+                @"女[^\d]*([\d]+)[^\d]*([\d]+)[^\d]*男",
+                @"[各|都][^\d]*([\d]+)",
+                @"([\d]+)[^\d]*男",
+                @"男[^\d]*([\d]+)",
+                @"([\d]+)[^\d]*女",
+                @"女[^\d]*([\d]+)"
             };
+
             IList<Regex> regex = new List<Regex>();
             foreach (var pattern in patterns)
             {
                 regex.Add(new Regex(pattern));
             }
 
-            int nMen;
-            int nWomen;
+            int nMen = 0;
+            int nWomen = 0;
 
+            int index = -1;
             foreach (Regex r in regex)
             {
+                ++index;
                 try
                 {
-                    nMen = int.Parse(r.Match(text).Groups[1].Value);
-                    nWomen = int.Parse(r.Match(text).Groups[2].Value);
+                    if(index == 0 || index == 2 || index == 4 || index == 6)
+                    {
+                        nMen = int.Parse(r.Match(text).Groups[1].Value);
+                        nWomen = int.Parse(r.Match(text).Groups[2].Value);
+                    }
+                    
+                    if(index == 1 || index == 3 || index == 5 || index == 7)
+                    {
+                        nMen = int.Parse(r.Match(text).Groups[2].Value);
+                        nWomen = int.Parse(r.Match(text).Groups[1].Value);
+                    }
+
+                    if(index == 8)
+                    {
+                        nMen = int.Parse(r.Match(text).Groups[1].Value);
+                        nWomen = nMen;
+                    }
+
+                    if(index == 9 || index == 10)
+                    {
+                        nMen = int.Parse(r.Match(text).Groups[1].Value);
+                    }
+
+                    if (index == 11 || index == 12)
+                    {
+                        nWomen = int.Parse(r.Match(text).Groups[1].Value);
+                    }
                 }
                 catch
                 {
                     continue;
                 }
 
+                break;
+            }
+
+            if(nMen != 0 || nWomen != 0)
+            {
                 user.GetWVector()[0] = 10000 * nMen + nWomen;
                 return true;
             }

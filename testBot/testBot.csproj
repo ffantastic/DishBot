@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\BotUtils.cs" />
+    <Compile Include="Utils\Display.cs" />
     <Compile Include="Utils\SessionUtils.cs" />
   </ItemGroup>
   <ItemGroup>
