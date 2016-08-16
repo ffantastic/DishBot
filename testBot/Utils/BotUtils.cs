@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using testBot.Bean;
+using testBot.Data;
 using testBot.DishBot;
 
 namespace testBot.Utils
@@ -29,6 +30,9 @@ namespace testBot.Utils
             if (questionState.IsFinished())
             {
                 string ret = MenuGenerator.Generate(user);
+
+                ret = Display.Show(new List<Dish>(), user);
+
                 if (ret != null)
                 {
                     user.Reset();
@@ -59,12 +63,14 @@ namespace testBot.Utils
         {
             //questionState.
             if(questionState.Current.Id == 5 && user.GetWVector()[5] == 0 || 
-                questionState.Current.Id == 5 && user.GetWVector()[5] == 1 && user.GetNotEatFood().Count > 0)
+                questionState.Current.Id == 5 && user.GetWVector()[5] == 1 && user.HatingMaterials.Count > 0)
             {
                 return true;
             }
  
             return false;
         }
-}
+
+    }
+
 }

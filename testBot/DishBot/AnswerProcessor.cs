@@ -266,14 +266,14 @@ namespace testBot.DishBot
                 }
             }
 
-            IList<Food> notEats = NotEats.GetNotEats(text);
+            IList<string> hatingMaterials = Food.GetHatingMaterial(text);
 
-            if(notEats.Count > 0)
+            if(hatingMaterials.Count > 0)
             {
                 user.GetWVector()[5] = 1;
-                foreach(var element in notEats)
+                foreach(var element in hatingMaterials)
                 {
-                    user.GetNotEatFood().Add(element);
+                    user.GetHatingMaterials().Add(element);
                 }
                 return true;
             }
@@ -298,13 +298,13 @@ namespace testBot.DishBot
 
         private static bool processor6(User user, string text)
         {
-            IList<Food> notEats = NotEats.GetNotEats(text);
+            IList<string> hatingMaterials = Food.GetHatingMaterial(text);
 
-            if (notEats.Count > 0)
+            if (hatingMaterials.Count > 0)
             {
-                foreach (var element in notEats)
+                foreach (var element in hatingMaterials)
                 {
-                    user.GetNotEatFood().Add(element);
+                    user.GetHatingMaterials().Add(element);
                 }
                 return true;
             }

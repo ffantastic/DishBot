@@ -151,6 +151,5 @@ D:\workspace\DishBot\testBot\bin\fr\Microsoft.Bot.Builder.resources.dll
 D:\workspace\DishBot\testBot\bin\ja\Microsoft.Bot.Builder.resources.dll
 D:\workspace\DishBot\testBot\bin\ru\Microsoft.Bot.Builder.resources.dll
 D:\workspace\DishBot\testBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\obj\Debug\testBot.csprojResolveAssemblyReference.cache
 D:\workspace\DishBot\testBot\obj\Debug\Bot Application1.dll
 D:\workspace\DishBot\testBot\obj\Debug\Bot Application1.pdb
