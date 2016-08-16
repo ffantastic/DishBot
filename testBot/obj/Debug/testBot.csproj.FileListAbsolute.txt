@@ -76,42 +76,42 @@ D:\workspace\DishBot\DishBot\testBot\bin\fr\Microsoft.Bot.Builder.resources.dll
 D:\workspace\DishBot\DishBot\testBot\bin\ja\Microsoft.Bot.Builder.resources.dll
 D:\workspace\DishBot\DishBot\testBot\bin\ru\Microsoft.Bot.Builder.resources.dll
 D:\workspace\DishBot\DishBot\testBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\bin\Bot Application1.dll.config
-D:\workspace\DishBot\testBot\bin\Bot Application1.dll
-D:\workspace\DishBot\testBot\bin\Bot Application1.pdb
-D:\workspace\DishBot\testBot\bin\Autofac.dll
-D:\workspace\DishBot\testBot\bin\Chronic.dll
-D:\workspace\DishBot\testBot\bin\Microsoft.Bot.Builder.dll
-D:\workspace\DishBot\testBot\bin\Microsoft.Bot.Connector.dll
-D:\workspace\DishBot\testBot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
-D:\workspace\DishBot\testBot\bin\Microsoft.Rest.ClientRuntime.dll
-D:\workspace\DishBot\testBot\bin\Microsoft.WindowsAzure.Configuration.dll
-D:\workspace\DishBot\testBot\bin\Newtonsoft.Json.dll
-D:\workspace\DishBot\testBot\bin\System.IdentityModel.Tokens.Jwt.dll
-D:\workspace\DishBot\testBot\bin\System.Net.Http.Formatting.dll
-D:\workspace\DishBot\testBot\bin\System.Web.Http.dll
-D:\workspace\DishBot\testBot\bin\System.Web.Http.WebHost.dll
-D:\workspace\DishBot\testBot\bin\Autofac.xml
-D:\workspace\DishBot\testBot\bin\Microsoft.Bot.Builder.xml
-D:\workspace\DishBot\testBot\bin\Microsoft.Bot.Connector.xml
-D:\workspace\DishBot\testBot\bin\Microsoft.IdentityModel.Protocol.Extensions.pdb
-D:\workspace\DishBot\testBot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
-D:\workspace\DishBot\testBot\bin\Microsoft.Rest.ClientRuntime.xml
-D:\workspace\DishBot\testBot\bin\Microsoft.WindowsAzure.Configuration.xml
-D:\workspace\DishBot\testBot\bin\Newtonsoft.Json.xml
-D:\workspace\DishBot\testBot\bin\System.IdentityModel.Tokens.Jwt.pdb
-D:\workspace\DishBot\testBot\bin\System.IdentityModel.Tokens.Jwt.xml
-D:\workspace\DishBot\testBot\bin\System.Net.Http.Formatting.xml
-D:\workspace\DishBot\testBot\bin\System.Web.Http.xml
-D:\workspace\DishBot\testBot\bin\System.Web.Http.WebHost.xml
-D:\workspace\DishBot\testBot\bin\ar\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\bin\en\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\bin\es\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\bin\fa\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\bin\fr\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\bin\ja\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\bin\ru\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
-D:\workspace\DishBot\testBot\obj\Debug\testBot.csprojResolveAssemblyReference.cache
-D:\workspace\DishBot\testBot\obj\Debug\Bot Application1.dll
-D:\workspace\DishBot\testBot\obj\Debug\Bot Application1.pdb
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Bot Application1.dll.config
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Bot Application1.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Bot Application1.pdb
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Autofac.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Chronic.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.Bot.Builder.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.Bot.Connector.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.Rest.ClientRuntime.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Newtonsoft.Json.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.Net.Http.Formatting.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.Web.Http.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.Web.Http.WebHost.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Autofac.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.Bot.Builder.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.Bot.Connector.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.IdentityModel.Protocol.Extensions.pdb
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.Rest.ClientRuntime.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\Newtonsoft.Json.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.Net.Http.Formatting.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.Web.Http.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\System.Web.Http.WebHost.xml
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\ar\Microsoft.Bot.Builder.resources.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\en\Microsoft.Bot.Builder.resources.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\es\Microsoft.Bot.Builder.resources.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\fa\Microsoft.Bot.Builder.resources.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\fr\Microsoft.Bot.Builder.resources.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\ja\Microsoft.Bot.Builder.resources.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\ru\Microsoft.Bot.Builder.resources.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\obj\Debug\testBot.csprojResolveAssemblyReference.cache
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\obj\Debug\Bot Application1.dll
+C:\Users\t-huazha.FAREAST\Documents\Visual Studio 2015\Projects\DishBot\testBot\obj\Debug\Bot Application1.pdb

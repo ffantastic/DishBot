@@ -11,16 +11,13 @@ namespace testBot.Utils
     {
         public static string GetAnswer(User user, QuestionState questionState, string text)
         {
-            if(questionState.Current != null)
+            // test here
+            MenuGenerator.Generate(user);
+            if (questionState.Current != null && !questionState.IsFinished())
             {
                 if(!AnswerProcessor.Process(questionState.Current.Id, user, text))
                 {
                     return "输入不合法，请重新回答";
-                }
-
-                while(skipNextQuestion(questionState, user))
-                {
-                    questionState.Next();
                 }
             }
 
@@ -51,18 +48,6 @@ namespace testBot.Utils
             string msg = $"{questionState.Next()}";
 
             return msg;
-        }
-
-        private static bool skipNextQuestion(QuestionState questionState, User user)
-        {
-            //questionState.
-            if(questionState.Current.Id == 5 && user.GetWVector()[5] == 0 || 
-                questionState.Current.Id == 5 && user.GetWVector()[5] == 1 && user.GetNotEatFood().Count > 0)
-            {
-                return true;
-            }
-
-            return false;
         }
 
     }
