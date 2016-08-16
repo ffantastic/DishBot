@@ -31,10 +31,6 @@ namespace testBot.DishBot
         {
             double score = dish.Score * 20;
 
-
-
-
-
             return 0;
         }
 
