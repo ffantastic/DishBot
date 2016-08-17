@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using testBot.Bean;
 using testBot.Data;
+using testBot.DishBot;
 
 namespace testBot.Utils
 {
@@ -11,21 +12,28 @@ namespace testBot.Utils
     {
         public static string CR = "  \n";
 
-        public static string Show(IList<Dish> menu, User user)
+        public static string Show(DishMenu menu)
         {
-            string content = $"您的菜单如下：{CR}";
-
-            double price = 0;
-
-            foreach(var dish in menu)
+            if (menu.BudgetError)
             {
-                content += string.Format("{0} {1}{2}", dish.Name, dish.Price, CR);
-                price += dish.Price;
+                return "您的预算过低，无法生成菜单";
             }
 
-            content += $"主食{user.GetWVector()[6]}份{CR}";
+            if (menu.otherError)
+            {
+                return "未知错误";
+            }
 
-            content += $"总计{price}元。";
+            string content = $"您的菜单如下：{CR}";
+
+            foreach(var dish in menu.dishlist)
+            {
+                content += string.Format("{0} {1}{2}", dish.Name, dish.Price, CR);
+            }
+
+            content += $"主食{menu.MainFoodNum}份{CR}";
+
+            content += $"总计{menu.TotalCost}元。";
 
             return content;
         }

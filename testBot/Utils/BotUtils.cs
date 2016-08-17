@@ -29,22 +29,13 @@ namespace testBot.Utils
 
             if (questionState.IsFinished())
             {
-                var ret = MenuGenerator.Generate(user);
+                DishMenu menu = MenuGenerator.Generate(user);
 
-             //   ret = Display.Show(new List<Dish>(), user);
-
-                if (ret != null)
-                {
-                    user.Reset();
-                    questionState.init();
-                    return ret;
-                }
-                else
-                {
-                    user.Reset();
-                    questionState.init();
-                    return "菜单生成错误";
-                }
+                string ret = Display.Show(menu);
+                
+                user.Reset();
+                questionState.init();
+                return ret;
             }
 
             return testQuestionState(user, questionState, text);

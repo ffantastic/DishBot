@@ -10,13 +10,13 @@ using System.Text.RegularExpressions;
 
 namespace testBot.DishBot
 {
-    public class Menu
+    public class DishMenu
     {
-        public List<Dish> dishlist;
+        public List<Dish> dishlist = new List<Dish>();
         public int MainFoodNum = 0;
         public int TotalCost = 0;
-        public int NumberOfFood = 0;
-        public bool BudgetError = false;
+        public int DishesNum = 0;
+        public bool BudgetError = false; //budget is too low.
         public bool otherError = false;
         public string message = "The menu is ready";
 
@@ -24,7 +24,7 @@ namespace testBot.DishBot
 
     public class MenuGenerator
     {
-        public static Menu Generate(User user)
+        public static DishMenu Generate(User user)
         {           
 
             List<int> taste = new List<int>(user.WVector);
@@ -53,12 +53,12 @@ namespace testBot.DishBot
             int maxDishNum = 2 + people;
             int maxCost = user.WVector[1];
             maxCost -= user.WVector[6];
-            int cost = 0;
+            int cost = user.WVector[6];
             int dishNum = 0;
             int idx = 0;
 
             // 
-            Menu retMenu = new Menu();
+            DishMenu retMenu = new DishMenu();
             if (user.WVector[6] < 0)
             {
                 retMenu.otherError = true;
@@ -83,13 +83,13 @@ namespace testBot.DishBot
                         select = SelectDish(coldDish, Material);
                         break;
                     case 2:
-                        select = SelectDish(coldDish, Material);
+                        select = SelectDish(meatDish, Material);
                         break;
                     case 3:
-                        select = SelectDish(coldDish, Material);
+                        select = SelectDish(vegeDish, Material);
                         break;
                     case 4:
-                        select = SelectDish(coldDish, Material);
+                        select = SelectDish(soupDish, Material);
                         break;
                 }
 
@@ -104,6 +104,8 @@ namespace testBot.DishBot
                 }
                 ++idx;
             }
+
+            retMenu.TotalCost = cost;
 
             return retMenu;                       
         }
@@ -130,7 +132,7 @@ namespace testBot.DishBot
 
             foreach(var dish in clientMenu)
             {
-                if(!dish.Materials.Intersect(user.NotEatFood).ToList().Any())
+                if(!dish.Materials.Intersect(user.HatingMaterials).ToList().Any())
                 {
                     remainMenu.Add(dish);
                 }                
@@ -209,12 +211,12 @@ namespace testBot.DishBot
                     }
                 }
 
-                if (string.Equals(dish.Name, "凉"))
+                if (string.Equals(dish.Type, "凉"))
                 {
                     coldDishes.Add(dish);
                 }
 
-                if (string.Equals(dish.Name, "汤"))
+                if (string.Equals(dish.Type, "汤"))
                 {
                     soupDishes.Add(dish);
                 }
