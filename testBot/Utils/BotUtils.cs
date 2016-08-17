@@ -29,9 +29,9 @@ namespace testBot.Utils
 
             if (questionState.IsFinished())
             {
-                string ret = MenuGenerator.Generate(user);
+                var ret = MenuGenerator.Generate(user);
 
-                ret = Display.Show(new List<Dish>(), user);
+             //   ret = Display.Show(new List<Dish>(), user);
 
                 if (ret != null)
                 {
