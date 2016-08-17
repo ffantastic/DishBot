@@ -58,7 +58,7 @@ namespace testBot.Data
         public double SweetTaste = -1;
         public double BitterTaste = -1;
         public double HotTaste = -1;
-        public double Score = -1;
+        public double Score = 100;
         public double Speed = -1;
         public string Type = "";
 

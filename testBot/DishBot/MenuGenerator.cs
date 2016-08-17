@@ -33,10 +33,7 @@ namespace testBot.DishBot
             clientMenu = RemoveHatingFood(user, clientMenu);
             
             // score for every dishes
-            for(int i = 0; i < clientMenu.Count; ++i)
-            {
-                EvaluateTaste(clientMenu[i], taste);
-            }
+            EvaluateTaste(clientMenu, taste);
 
             // divided into four types
             List<Dish> coldDish;
@@ -46,10 +43,15 @@ namespace testBot.DishBot
             HashSet<string> Material = new HashSet<string>();
             DivideByType(clientMenu, out coldDish, out meatDish, out vegeDish, out soupDish);
 
+            coldDish = coldDish.OrderByDescending(dish => dish.Score).ToList();
+            meatDish = meatDish.OrderByDescending(dish => dish.Score).ToList();
+            vegeDish = vegeDish.OrderByDescending(dish => dish.Score).ToList();
+            soupDish = soupDish.OrderByDescending(dish => dish.Score).ToList();
 
             // recommend algorithm
             int people = user.WVector[0] / 10000 + user.WVector[0] % 10000;
-            List<int> dishType = new List<int> { 3, 2, 4, 3, 2, 1, 1, 3, 2, 1, 2, 1, 1, 4, 3, 2, 3, 2, 4 ,3 , 2, 4, 3, 3, 2, 4, 3, 2, 1, 1, 3, 2, 1, 2, 1, 1, 4, 3, 2, 3, 2, 4, 3 , 3, 2,};
+            List<int> dishType = new List<int> { 3, 2, 4, 3, 2, 1, 1, 3, 2, 1, 2, 1, 1, 4, 3, 2, 3, 2, 4 ,3 , 2, 4, 3, 3, 2, 4, 3,
+                2, 1, 1, 3, 2, 1, 2, 1, 1, 4, 3, 2, 3, 2, 4, 3 , 3, 2,};
             int maxDishNum = 2 + people;
             int maxCost = user.WVector[1];
             maxCost -= user.WVector[6];
@@ -142,50 +144,53 @@ namespace testBot.DishBot
         }
         
 
-        private static double EvaluateTaste(Dish dish, List<int> taste)
+        private static void EvaluateTaste(List<Dish> clientMenu, List<int> taste)
         {
-            dish.Score = dish.Score * 20;
+            for (int i = 0; i < clientMenu.Count; ++i)
+            {
+                
+                clientMenu[i].Score = clientMenu[i].Score * 20;
             
-            if(Math.Abs(taste[2] - dish.HotTaste*2) > 4 )
-            {
-                dish.Score *= 0.9;
-                if (Math.Abs(taste[2] - dish.HotTaste * 2) > 6)
+                if(Math.Abs(taste[2] - clientMenu[i].HotTaste *2) > 4 )
                 {
-                    dish.Score *= 0.9;
-                    if (Math.Abs(taste[2] - dish.HotTaste * 2) > 8)
+                    clientMenu[i].Score *= 0.9;
+                    if (Math.Abs(taste[2] - clientMenu[i].HotTaste * 2) > 6)
                     {
-                        dish.Score *= 0.9;
+                        clientMenu[i].Score *= 0.9;
+                        if (Math.Abs(taste[2] - clientMenu[i].HotTaste * 2) > 8)
+                        {
+                            clientMenu[i].Score *= 0.9;
+                        }
+                    }
+                }
+
+                if (Math.Abs(taste[3] - clientMenu[i].SweetTaste * 2) > 4)
+                {
+                    clientMenu[i].Score *= 0.9;
+                    if (Math.Abs(taste[3] - clientMenu[i].SweetTaste * 2) > 6)
+                    {
+                        clientMenu[i].Score *= 0.9;
+                        if (Math.Abs(taste[3] - clientMenu[i].SweetTaste * 2) > 8)
+                        {
+                            clientMenu[i].Score *= 0.9;
+                        }
+                    }
+                }
+
+                if (Math.Abs(taste[4] - clientMenu[i].BitterTaste * 2) > 4)
+                {
+                    clientMenu[i].Score *= 0.9;
+                    if (Math.Abs(taste[4] - clientMenu[i].BitterTaste * 2) > 6)
+                    {
+                        clientMenu[i].Score *= 0.9;
+                        if (Math.Abs(taste[4] - clientMenu[i].BitterTaste * 2) > 8)
+                        {
+                            clientMenu[i].Score *= 0.9;
+                        }
                     }
                 }
             }
 
-            if (Math.Abs(taste[3] - dish.SweetTaste * 2) > 4)
-            {
-                dish.Score *= 0.9;
-                if (Math.Abs(taste[3] - dish.SweetTaste * 2) > 6)
-                {
-                    dish.Score *= 0.9;
-                    if (Math.Abs(taste[3] - dish.SweetTaste * 2) > 8)
-                    {
-                        dish.Score *= 0.9;
-                    }
-                }
-            }
-
-            if (Math.Abs(taste[4] - dish.BitterTaste * 2) > 4)
-            {
-                dish.Score *= 0.9;
-                if (Math.Abs(taste[4] - dish.BitterTaste * 2) > 6)
-                {
-                    dish.Score *= 0.9;
-                    if (Math.Abs(taste[4] - dish.BitterTaste * 2) > 8)
-                    {
-                        dish.Score *= 0.9;
-                    }
-                }
-            }
-
-            return dish.Score;
         }
 
         private static void DivideByType(List<Dish> inputDishes, out List<Dish> coldDishes, out List<Dish>meatDishes, out List<Dish>vegetDishes, out List<Dish>soupDishes)
