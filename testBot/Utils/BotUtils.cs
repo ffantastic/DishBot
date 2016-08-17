@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using testBot.Bean;
+using testBot.Data;
 using testBot.DishBot;
 
 namespace testBot.Utils
@@ -13,17 +14,25 @@ namespace testBot.Utils
         {
             // test here
             MenuGenerator.Generate(user);
-            if (questionState.Current != null && !questionState.IsFinished())
+            if (questionState.Current != null)
             {
                 if(!AnswerProcessor.Process(questionState.Current.Id, user, text))
                 {
                     return "输入不合法，请重新回答";
+                }
+
+                while (skipNextQuestion(questionState, user))
+                {
+                    questionState.Next();
                 }
             }
 
             if (questionState.IsFinished())
             {
                 string ret = MenuGenerator.Generate(user);
+
+                ret = Display.Show(new List<Dish>(), user);
+
                 if (ret != null)
                 {
                     user.Reset();
@@ -50,5 +59,18 @@ namespace testBot.Utils
             return msg;
         }
 
+        private static bool skipNextQuestion(QuestionState questionState, User user)
+        {
+            //questionState.
+            if(questionState.Current.Id == 5 && user.GetWVector()[5] == 0 || 
+                questionState.Current.Id == 5 && user.GetWVector()[5] == 1 && user.HatingMaterials.Count > 0)
+            {
+                return true;
+            }
+ 
+            return false;
+        }
+
     }
+
 }

@@ -5,76 +5,46 @@ using System.Web;
 
 namespace testBot.Data
 {
-    public enum Food
+    public class Food
     {
-        /// <summary>
-        /// Meat Dishes
-        /// </summary>
-        NiuRou,
-        ZhuRou,
-        YangRou,
-        Xia,
-        Yu,
-        JiRou,
-        YaRou,
-        GouRou,
-        Turkey,
-        NiuWa,
-        JiDan,
-        GeLi,
-        YouYu,
-        ERou,
-        XieRou,
-        SheRou,
+        public static HashSet<string> HatingMaterials = null;
 
-        /// <summary>
-        /// Vegetable Dishes
-        /// </summary>
-        DongGua = 100,
-        NanGua,
-        BaiCai,
-        KongXinCai,
-        HuangGua,
-        DouFu,
-        HeiMuEr,
-        YinEr,
-        XiangGu,
-        PingGu,
-        TongHao,
-        BoCai,
-        XiLanHua,
-        LianOu,
-        JiangDou,
-        WaWaCai,
-        XingBaoGu,
-        ChaShuGu,
-        HuLuoBo,
-        QieZi,
-        HeLanDou,
-        HuaSheng,
-        TuDou,
-        XiHongShi,
-        QinCai,
-        SiJiDou,
-        BaoCai,
-        JiCai,
-        XianCai,
-        YuMi,
-        ShengCai,
-        JinZhenGu,
-        MoYu,
-        JiuCai,
-        NianGao,
+        private static void Init()
+        {
+            if(HatingMaterials != null)
+            {
+                return;
+            }
 
-        /// <summary>
-        /// Side Food
-        /// </summary>
-        XiangCai = 200,
-        Cong,
-        Suan,
-        DaCong,
-        SuanCai,
-        Jiang
+            HashSet<string> hatingMaterial = new HashSet<string>();
+
+            foreach(var dish in Cache.TheWholeDishes)
+            {
+                foreach(var material in dish.Materials)
+                {
+                    hatingMaterial.Add(material);
+                }
+            }
+
+            HatingMaterials = hatingMaterial;
+        }
+
+        public static IList<string> GetHatingMaterial(string text)
+        {
+            Init();
+
+            IList<string> hatingMaterials = new List<string>();
+
+            foreach(var material in HatingMaterials)
+            {
+                if (text.Contains(material))
+                {
+                    hatingMaterials.Add(material);
+                }
+            }
+
+            return hatingMaterials;
+        }
     }
 
 }
