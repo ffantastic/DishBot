@@ -28,7 +28,7 @@ namespace testBot
 
                     Dish eachDish = new Dish();
                     eachDish.Name = cols[0];
-                    eachDish.Price = Convert.ToDouble(cols[1]);
+                    eachDish.Price = Convert.ToInt32(cols[1]);
                     eachDish.Amount = Convert.ToDouble(cols[2]);
 
                     foreach (var m in cols[3].ToString().Split('/'))

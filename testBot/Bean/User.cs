@@ -11,7 +11,7 @@ namespace testBot.Bean
     {
         private static IList<int> InitVector = new List<int> { -1, -1, -1, -1, -1, -1, -1 };
 
-        public IList<Food> NotEatFood = new List<Food>();
+        public IList<string> NotEatFood = new List<string>();
 
         /// <summary>
         /// WVector[0]: instruction: 30004 means 3 men and 4 women. // 10000*nMen + nWomen.
@@ -24,7 +24,7 @@ namespace testBot.Bean
         public User(SerializationInfo info, StreamingContext context)
         {
             InitVector = info.GetValue("InitVector", typeof(IList<int>)) as IList<int>;
-            NotEatFood = info.GetValue("NotEatFood", typeof(IList<Food>)) as IList<Food>;
+            NotEatFood = info.GetValue("NotEatFood", typeof(IList<string>)) as IList<string>;
             WVector = info.GetValue("WVector", typeof(IList<int>)) as IList<int>;
         }
 
@@ -38,7 +38,7 @@ namespace testBot.Bean
         public void Reset()
         {
             WVector = new List<int>(InitVector);
-            NotEatFood = new List<Food>();
+            NotEatFood = new List<string>();
         }
 
         public void ModifyWVector(int Index, int Value = -1)
@@ -51,7 +51,7 @@ namespace testBot.Bean
             return WVector;
         }
 
-        public IList<Food> GetNotEatFood()
+        public IList<string> GetNotEatFood()
         {
             return NotEatFood;
         }

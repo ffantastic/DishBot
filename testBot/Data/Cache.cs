@@ -52,7 +52,7 @@ namespace testBot.Data
         public string Name = "";
         public List<string> Materials = new List<string>();
 
-        public double Price = -1;
+        public int Price = -1;
         public double Amount = -1;
         public double SourTaste = -1;
         public double SweetTaste = -1;
