@@ -22,7 +22,6 @@ namespace testBot.DishBot
             hashToProcessor[4] = processor4;
             hashToProcessor[5] = processor5;
             hashToProcessor[6] = processor6;
-            hashToProcessor[7] = processor7;
         }
 
         public static string Process(int QuestionId)
@@ -62,11 +61,6 @@ namespace testBot.DishBot
         }
 
         private static string processor6(int currentQuestionId)
-        {
-            return $"温馨提示，格式如：{Display.CR}猪肉，香菜，葱";
-        }
-
-        private static string processor7(int currentQuestionId)
         {
             return $"温馨提示，格式如：{Display.CR}2";
         }

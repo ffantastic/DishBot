@@ -34,7 +34,9 @@ namespace testBot.Utils
             string mainfood = string.Format("{0}份米饭", menu.MainFoodNum);
             content += string.Format("{0}{1}元{2}", mainfood.PadRight(7), menu.MainFoodNum.ToString(), CR);
 
-            content += string.Format("总计:      {0}元" , menu.TotalCost);
+            content += string.Format("总计:      {0}元{1}" , menu.TotalCost, CR);
+
+            content += "确认下单吗？";
 
             return content;
         }

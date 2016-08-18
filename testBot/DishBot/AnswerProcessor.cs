@@ -39,6 +39,25 @@ namespace testBot.DishBot
                 return false;
             }
 
+            int nMen = 0;
+            int nWomen = 0;
+
+            Regex regexChinese = new Regex(@"([零|一|二|三|四|五|六|七|八|九|十]+)[^(零|一|二|三|四|五|六|七|八|九|十)]*男[^(零|一|二|三|四|五|六|七|八|九|十)]*([零|一|二|三|四|五|六|七|八|九|十]+)[^(零|一|二|三|四|五|六|七|八|九|十)]*女");
+            try
+            {
+                nMen = ChineseToDigit.GetDigit(regexChinese.Match(text).Groups[1].Value);
+                nWomen = ChineseToDigit.GetDigit(regexChinese.Match(text).Groups[2].Value);
+                if (nMen != 0 || nWomen != 0)
+                {
+                    user.GetWVector()[0] = 10000 * nMen + nWomen;
+                    return true;
+                }
+            }
+            catch
+            {
+                //log
+            }
+
             string[] patterns =
             {
                 @"([\d]+)[^\d]*男[^\d]*([\d]+)[^\d]*女",
@@ -61,9 +80,6 @@ namespace testBot.DishBot
             {
                 regex.Add(new Regex(pattern));
             }
-
-            int nMen = 0;
-            int nWomen = 0;
 
             int index = -1;
             foreach (Regex r in regex)
@@ -326,6 +342,23 @@ namespace testBot.DishBot
                 return true;
             }
 
+            int value;
+
+            Regex regexChinese = new Regex(@"([零|一|二|三|四|五|六|七|八|九|十]+)");
+            try
+            {
+                value = ChineseToDigit.GetDigit(regexChinese.Match(text).Groups[1].Value);
+                if (value != 0)
+                {
+                    user.GetWVector()[6] = value;
+                    return true;
+                }
+            }
+            catch
+            {
+                //log
+            }
+
             string[] patterns =
             {
                 @"([\d]+)"
@@ -336,7 +369,6 @@ namespace testBot.DishBot
                 regex.Add(new Regex(pattern));
             }
 
-            int value;
 
             foreach (Regex r in regex)
             {

@@ -125,6 +125,7 @@
     <Compile Include="Bean\User.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Data\Cache.cs" />
+    <Compile Include="Data\ChineseToDigit.cs" />
     <Compile Include="Data\DB.cs" />
     <Compile Include="Data\Food.cs" />
     <Compile Include="DishBot\AnswerProcessor.cs" />
