@@ -24,7 +24,6 @@ namespace testBot.DishBot
             hashToProcessor[4] = processor4;
             hashToProcessor[5] = processor5;
             hashToProcessor[6] = processor6;
-            hashToProcessor[7] = processor7;
         }
 
         public static bool Process(int QuestionId, User user, string text)
@@ -313,46 +312,11 @@ namespace testBot.DishBot
                 return true;
             }
 
-            string[] AnswerYes =
-            {
-                "有",
-                "嗯"
-            };
-
-            foreach (var str in AnswerYes)
-            {
-                if (text.Contains(str))
-                {
-                    user.GetWVector()[5] = 1;
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private static bool processor6(User user, string text)
-        {
-            if (text.Contains("跳过"))
-            {
-                return true;
-            }
-
-            IList<string> hatingMaterials = Food.GetHatingMaterial(text);
-
-            if (hatingMaterials.Count > 0)
-            {
-                foreach (var element in hatingMaterials)
-                {
-                    user.GetHatingMaterials().Add(element);
-                }
-                return true;
-            }
-
+            user.GetWVector()[5] = 0;
             return true;
         }
 
-        private static bool processor7(User user, string text)
+        private static bool processor6(User user, string text)
         {
             if (text.Contains("跳过"))
             {

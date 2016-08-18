@@ -112,7 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.htm" />
-    <Content Include="dishMenu2.txt" />
+    <Content Include="dishMenu.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -139,6 +139,7 @@
     <Compile Include="Utils\BotUtils.cs" />
     <Compile Include="Utils\Display.cs" />
     <Compile Include="Utils\SessionUtils.cs" />
+    <Compile Include="Utils\TuringUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

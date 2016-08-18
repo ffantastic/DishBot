@@ -22,8 +22,17 @@ namespace testBot.Utils
             {
                 if(!AnswerProcessor.Process(questionState.Current.Id, user, text))
                 {
-                    // return Tips.Process(questionState.Current.Id);
-                    return TuringUtils.GetTuringAnswer(userId, text);
+                    string ret = Tips.Process(questionState.Current.Id);
+                    try
+                    {
+                        ret = TuringUtils.GetTuringAnswer(userId, text) + Display.CR + $"({ret})";
+                    }
+                    catch
+                    {
+                        //log
+                    }
+
+                    return ret;
                 }
 
                 while (skipNextQuestion(questionState, user))
@@ -57,13 +66,6 @@ namespace testBot.Utils
 
         private static bool skipNextQuestion(QuestionState questionState, User user)
         {
-            //questionState.
-            if(questionState.Current.Id == 5 && user.GetWVector()[5] == 0 || 
-                questionState.Current.Id == 5 && user.GetWVector()[5] == 1 && user.HatingMaterials.Count > 0)
-            {
-                return true;
-            }
- 
             return false;
         }
 

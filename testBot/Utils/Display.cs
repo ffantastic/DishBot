@@ -10,7 +10,7 @@ namespace testBot.Utils
 {
     public class Display
     {
-        public static string CR = "  \n";
+        public static string CR = "\n\r";
 
         public static string Show(DishMenu menu)
         {
@@ -28,12 +28,13 @@ namespace testBot.Utils
 
             foreach(var dish in menu.dishlist)
             {
-                content += string.Format("{0} {1}{2}", dish.Name, dish.Price, CR);
+                content += string.Format("{0}{1}元{2}", dish.Name.PadRight(7), dish.Price, CR);
             }
 
-            content += $"主食{menu.MainFoodNum}份{CR}";
+            string mainfood = string.Format("{0}份米饭", menu.MainFoodNum);
+            content += string.Format("{0}{1}元{2}", mainfood.PadRight(7), menu.MainFoodNum.ToString(), CR);
 
-            content += $"总计{menu.TotalCost}元。";
+            content += string.Format("总计:      {0}元" , menu.TotalCost);
 
             return content;
         }
