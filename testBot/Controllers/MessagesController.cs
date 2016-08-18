@@ -39,7 +39,7 @@ namespace testBot
                     questionState = new QuestionState();
                     questionState.init();
                 }
-                string replyStr = BotUtils.GetAnswer(user, questionState,activity.Text);
+                string replyStr = BotUtils.GetAnswer(user, questionState,activity.Text, activity.From.Id);
 
                 await SessionUtils.SetUser(activity,user);
                 await SessionUtils.SetQuestionStateRemote(activity, questionState);

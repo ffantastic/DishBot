@@ -10,7 +10,7 @@ namespace testBot.Utils
 {
     public class BotUtils
     {
-        public static string GetAnswer(User user, QuestionState questionState, string text)
+        public static string GetAnswer(User user, QuestionState questionState, string text,string userId)
         {
             if (text.Contains("重新开始"))
             {
@@ -22,7 +22,8 @@ namespace testBot.Utils
             {
                 if(!AnswerProcessor.Process(questionState.Current.Id, user, text))
                 {
-                    return Tips.Process(questionState.Current.Id);
+                    // return Tips.Process(questionState.Current.Id);
+                    return TuringUtils.GetTuringAnswer(userId, text);
                 }
 
                 while (skipNextQuestion(questionState, user))
