@@ -35,6 +35,11 @@ namespace testBot.DishBot
 
         private static bool processor0(User user, string text)
         {
+            if (text.Contains("跳过"))
+            {
+                return false;
+            }
+
             string[] patterns =
             {
                 @"([\d]+)[^\d]*男[^\d]*([\d]+)[^\d]*女",
@@ -114,6 +119,12 @@ namespace testBot.DishBot
 
         private static bool processor1(User user, string text)
         {
+            if (text.Contains("跳过"))
+            {
+                user.GetWVector()[1] = int.MaxValue;
+                return true;
+            }
+
             string[] patterns =
             {
                 @"([\d]+)"
@@ -146,6 +157,12 @@ namespace testBot.DishBot
 
         private static bool processor2(User user, string text)
         {
+            if (text.Contains("跳过"))
+            {
+                user.GetWVector()[2] = 3;
+                return true;
+            }
+
             string[] patterns =
             {
                 @"([\d]+)"
@@ -181,6 +198,12 @@ namespace testBot.DishBot
 
         private static bool processor3(User user, string text)
         {
+            if (text.Contains("跳过"))
+            {
+                user.GetWVector()[3] = 2;
+                return true;
+            }
+
             string[] patterns =
             {
                 @"([\d]+)"
@@ -216,6 +239,12 @@ namespace testBot.DishBot
 
         private static bool processor4(User user, string text)
         {
+            if (text.Contains("跳过"))
+            {
+                user.GetWVector()[4] = 5;
+                return true;
+            }
+
             string[] patterns =
             {
                 @"([\d]+)"
@@ -251,6 +280,12 @@ namespace testBot.DishBot
 
         private static bool processor5(User user, string text)
         {
+            if (text.Contains("跳过"))
+            {
+                user.GetWVector()[5] = 0;
+                return true;
+            }
+
             string[] AnswerNo =
             {
                 "无",
@@ -298,6 +333,11 @@ namespace testBot.DishBot
 
         private static bool processor6(User user, string text)
         {
+            if (text.Contains("跳过"))
+            {
+                return true;
+            }
+
             IList<string> hatingMaterials = Food.GetHatingMaterial(text);
 
             if (hatingMaterials.Count > 0)
@@ -309,11 +349,19 @@ namespace testBot.DishBot
                 return true;
             }
 
-            return false;
+            return true;
         }
 
         private static bool processor7(User user, string text)
         {
+            if (text.Contains("跳过"))
+            {
+                int nMen = user.GetWVector()[0] / 10000;
+                int nWomen = user.GetWVector()[0] % 10000;
+                user.GetWVector()[6] = nMen;
+                return true;
+            }
+
             string[] patterns =
             {
                 @"([\d]+)"

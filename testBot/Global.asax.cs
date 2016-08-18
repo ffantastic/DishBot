@@ -14,12 +14,14 @@ namespace testBot
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            ReadData(Cache.TheWholeDishes, @"dishMenu.txt");
+            var path = Directory.GetCurrentDirectory();
+            ReadData(Cache.TheWholeDishes, "~/dishMenu.txt");
         }
 
         private void ReadData(List<Dish> TheWholeDishes, string filePath)
         {
-            var dir = Directory.GetCurrentDirectory();
+            //var dir = Directory.GetCurrentDirectory();
+            filePath = Server.MapPath(filePath);
             if (File.Exists(filePath))
             {
                 foreach (var eachline in File.ReadAllLines(filePath))

@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.htm" />
+    <Content Include="dishMenu2.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -130,6 +131,7 @@
     <Compile Include="DishBot\MenuGenerator.cs" />
     <Compile Include="DishBot\PriorityQueue.cs" />
     <Compile Include="DishBot\QuestionState.cs" />
+    <Compile Include="DishBot\Tips.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\DishBot.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

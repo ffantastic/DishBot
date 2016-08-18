@@ -12,13 +12,17 @@ namespace testBot.Utils
     {
         public static string GetAnswer(User user, QuestionState questionState, string text)
         {
-            // test here
-            MenuGenerator.Generate(user);
+            if (text.Contains("重新开始"))
+            {
+                user.Reset();
+                questionState.init();
+            }
+            
             if (questionState.Current != null)
             {
                 if(!AnswerProcessor.Process(questionState.Current.Id, user, text))
                 {
-                    return "输入不合法，请重新回答";
+                    return Tips.Process(questionState.Current.Id);
                 }
 
                 while (skipNextQuestion(questionState, user))

@@ -14,7 +14,14 @@ namespace testBot.Bean
         public IList<string> HatingMaterials = new List<string>();
 
         /// <summary>
-        /// WVector[0]: instruction: 30004 means 3 men and 4 women. // 10000*nMen + nWomen.
+        /// Instructions:
+        /// WVector[0]: 30004 means 3 men and 4 women. // 10000*nMen + nWomen.
+        /// WVector[1]: budget
+        /// WVector[2]: hot metric
+        /// WVector[3]: sweet metric
+        /// WVector[4]: salt metric
+        /// WVector[5]: is having hating materials
+        /// WVector[6]: main food number
         /// </summary>
         internal IList<int> WVector = new List<int>(InitVector);
 
